@@ -27,12 +27,16 @@ class Header extends Component {
   render() {
     const { nameInput } = this.state;
     return (
-      <header data-testid="header-component">
-        {!nameInput ? (<Loading />) : (
-          // nameInput
-          <h2 data-testid="header-user-name">{nameInput}</h2>
-        )}
-      </header>
+      <main>
+        <header data-testid="header-component">
+          {!nameInput ? (<Loading />) : (
+            <h2 data-testid="header-user-name">{nameInput}</h2>
+          )}
+        </header>
+        <nav data-testid="link-to-search">
+          teste
+        </nav>
+      </main>
     );
   }
 }
