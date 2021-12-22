@@ -1,10 +1,37 @@
 import React, { Component } from 'react';
+import { getUser } from '../services/userAPI';
+import Loading from './Loading';
+
+// Utilize a função getUser da userAPI para recuperar o nome da pessoa logada e exiba essa
+// informação na tela. Você pode usar qualquer tag HTML que faça sentido, desde que ela tenha o
+// atributo data-testid="header-user-name".
 
 class Header extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      nameInput: '',
+    };
+  }
+
+  componentDidMount() {
+    this.takeUser();
+  }
+
+  async takeUser() {
+    const user = await getUser();
+    this.setState({ nameInput: user.name });
+  }
+
   render() {
+    const { nameInput } = this.state;
     return (
       <header data-testid="header-component">
-        <h1>Teste</h1>
+        {!nameInput ? (<Loading />) : (
+          // nameInput
+          <h2 data-testid="header-user-name">{nameInput}</h2>
+        )}
       </header>
     );
   }
