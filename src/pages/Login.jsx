@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import Loading from '../components/Loading';
+
 import { createUser } from '../services/userAPI';
 
 class Login extends Component {
@@ -8,6 +11,8 @@ class Login extends Component {
     this.state = {
       nameInput: '',
       buttonDisable: true,
+      loading: false,
+      logged: false,
     };
   }
 
@@ -26,12 +31,28 @@ class Login extends Component {
 
   userLogin = () => {
     const { nameInput } = this.state;
-    // console.log('1');
-    createUser({ name: nameInput });
+
+    this.setState({ loading: true }, () => {
+      createUser({ name: nameInput }).then(() => this.setState({
+        loading: false,
+        logged: true,
+      }));
+    });
+  //   const { nameInput } = this.state;
+  //   // console.log('1');
   }
 
   render() {
-    const { nameInput, buttonDisable } = this.state;
+    const { nameInput, buttonDisable, loading, logged } = this.state;
+
+    if (loading) {
+      return <Loading />;
+    }
+
+    if (logged) {
+      return <Redirect to="./search" />;
+    }
+
     return (
       <div data-testid="page-login">
         <h1>Login</h1>
