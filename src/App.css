@@ -1,7 +1,12 @@
 main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: blueviolet;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: blueviolet;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
 }
