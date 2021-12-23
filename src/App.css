@@ -10,3 +10,16 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+.searchMain {
+  margin-left: 40%;
+}
+
+#musicInput {
+  margin: 5px;
+}
+
+#buttonSearch {
+  margin-left: 10%;
+  background-color: violet;
+}

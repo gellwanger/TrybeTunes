@@ -36,9 +36,9 @@ class Header extends Component {
             isLoading
               ? <Loading />
               : (
-                <span data-testid="header-user-name">
+                <h2 data-testid="header-user-name">
                   { nameInput }
-                </span>
+                </h2>
               )
           }
         </header>
