@@ -38,12 +38,10 @@ class Login extends Component {
         logged: true,
       }));
     });
-  //   const { nameInput } = this.state;
-  //   // console.log('1');
   }
 
   render() {
-    const { nameInput, buttonDisable, loading, logged } = this.state;
+    const { buttonDisable, loading, logged } = this.state;
 
     if (loading) {
       return <Loading />;
@@ -65,7 +63,6 @@ class Login extends Component {
               data-testid="login-name-input"
               id="nameInput"
               name="nameInput"
-              value={ nameInput }
               onChange={ this.handleSubmit }
               placeholder="insira seu nome aqui"
             />
