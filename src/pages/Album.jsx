@@ -4,7 +4,7 @@ class Album extends Component {
   render() {
     return (
       <div data-testid="page-album">
-        <h1>Album</h1>
+        <h1>Esse é o album:</h1>
       </div>
     );
   }
