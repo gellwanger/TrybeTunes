@@ -13,6 +13,7 @@ class Search extends Component {
       loading: false,
       buttonDisable: true,
       artistSearched: false,
+      albums: [],
     };
   }
 
@@ -29,8 +30,8 @@ class Search extends Component {
       .then((dataAlbums) => {
         this.setState({
           loading: false,
-          // answerOfSearch: searchInAPI,
-          allAlbums: [...dataAlbums],
+          artistSearched: searchInAPI,
+          albums: [...dataAlbums],
         });
       });
   }
@@ -52,7 +53,7 @@ class Search extends Component {
   }
 
   render() {
-    const { loading, searchInAPI, buttonDisable, artistSearched, allAlbums } = this.state;
+    const { loading, searchInAPI, buttonDisable, artistSearched, albums } = this.state;
 
     const searchInput = (
       <input
@@ -79,15 +80,15 @@ class Search extends Component {
       <p>{ `Resultado de álbuns de: ${artistSearched}` }</p>
     ) : '';
 
-    const hasAlbums = (artistSearched && allAlbums.length <= 0);
+    const hasAlbums = (artistSearched && albums.length <= 0);
 
     return (
       <div className="searchPage">
         <h1>Search</h1>
         { loading ? <Loading /> : searchArtistOrBand}
         { hasArtist }
-        <tag>
-          {allAlbums && allAlbums.map((album) => (
+        <div>
+          {albums && albums.map((album) => (
             <div key={ album.collectionId }>
               <Link
                 to={ `/album/${album.collectionId}` }
@@ -98,7 +99,7 @@ class Search extends Component {
             </div>
           ))}
           { hasAlbums && <span> Nenhum álbum foi encontrado</span>}
-        </tag>
+        </div>
 
         <button
           data-testid="search-artist-button"
