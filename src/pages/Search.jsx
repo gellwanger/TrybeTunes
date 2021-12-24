@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import searchAlbumAPI from '../services/searchAlbumsAPI';
 
 import Loading from '../components/Loading';
@@ -11,6 +12,7 @@ class Search extends Component {
       searchInAPI: '',
       loading: false,
       buttonDisable: true,
+      artistSearched: false,
     };
   }
 
@@ -50,7 +52,7 @@ class Search extends Component {
   }
 
   render() {
-    const { loading, searchInAPI, buttonDisable } = this.state;
+    const { loading, searchInAPI, buttonDisable, artistSearched, allAlbums } = this.state;
 
     const searchInput = (
       <input
@@ -73,10 +75,31 @@ class Search extends Component {
       </form>
     );
 
+    const hasArtist = artistSearched ? (
+      <p>{ `Resultado de álbuns de: ${artistSearched}` }</p>
+    ) : '';
+
+    const hasAlbums = (artistSearched && allAlbums.length <= 0);
+
     return (
       <div className="searchPage">
         <h1>Search</h1>
         { loading ? <Loading /> : searchArtistOrBand}
+        { hasArtist }
+        <tag>
+          {allAlbums && allAlbums.map((album) => (
+            <div key={ album.collectionId }>
+              <Link
+                to={ `/album/${album.collectionId}` }
+                data-testid={ `link-to-album-${album.collectionId}` }
+              >
+                <p>{album.collectionName}</p>
+              </Link>
+            </div>
+          ))}
+          { hasAlbums && <span> Nenhum álbum foi encontrado</span>}
+        </tag>
+
         <button
           data-testid="search-artist-button"
           type="button"
