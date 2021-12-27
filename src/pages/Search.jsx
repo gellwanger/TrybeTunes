@@ -84,7 +84,7 @@ class Search extends Component {
       <p>{ `Resultado de álbuns de: ${artistSearched}` }</p>
     ) : '';
 
-    const hasAlbums = (artistSearched && albums.length <= 0);
+    const noAlbums = (artistSearched && albums.length <= 0);
 
     return (
       <div className="searchPage">
@@ -102,7 +102,7 @@ class Search extends Component {
               </Link>
             </div>
           ))}
-          { hasAlbums && <span> Nenhum álbum foi encontrado</span>}
+          { noAlbums && <p> Nenhum álbum foi encontrado</p>}
         </div>
 
         <button

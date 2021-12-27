@@ -11,7 +11,7 @@ class MusicCard extends Component {
   constructor() {
     super();
     this.state = {
-      favorita: false,
+      favorite: false,
       isLoading: false,
     };
   }
@@ -27,15 +27,15 @@ class MusicCard extends Component {
         if (response.some((song) => song.trackId === music.trackId)) {
           this.setState({
             isLoading: false,
-            favorita: true,
+            favorite: true,
           });
         }
       });
   };
 
-  changeCheckBoxInput = ({ target: { checked } }) => {
+  changeCheckboxInput = ({ target: { checked } }) => {
     this.setState({
-      favorita: checked,
+      favorite: checked,
       isLoading: true,
     }, () => { this.addFavorites(); });
   };
@@ -49,7 +49,7 @@ class MusicCard extends Component {
   }
 
   render() {
-    const { isLoading, favorita } = this.state;
+    const { isLoading, favorite } = this.state;
     const { musicName, previewUrl, trackId } = this.props;
 
     return (
@@ -59,17 +59,17 @@ class MusicCard extends Component {
             <span>{ musicName }</span>
             <audio data-testid="audio-component" src={ previewUrl } controls>
               <track kind="captions" />
-              O seu navegador não suporta o elemento
+              Your browser doesn`t suport the element
               <code>audio</code>
             </audio>
             <label htmlFor="favorita">
-              Favorita
+              Favorite
               <input
                 data-testid={ `checkbox-music-${trackId}` }
                 type="checkbox"
                 name="favorita"
-                checked={ favorita }
-                onChange={ this.changeCheckBoxInput }
+                checked={ favorite }
+                onChange={ this.changeCheckboxInput }
               />
             </label>
           </div>
