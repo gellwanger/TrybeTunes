@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Album from '../pages/Album';
 import Favorites from '../pages/Favorites';
@@ -12,7 +12,7 @@ import Search from '../pages/Search';
 class Routes extends Component {
   render() {
     return (
-      <div className="routes">
+      <Switch className="routes">
         <Route exact path="/" component={ Login } />
         <Route exact path="/album/:id" component={ Album } />
         <Route exact path="/Favorites" component={ Favorites } />
@@ -20,7 +20,7 @@ class Routes extends Component {
         <Route exact path="/Profile/Edit" component={ ProfileEdit } />
         <Route exact path="/Search" component={ Search } />
         <Route exact path="*" component={ NotFoud } />
-      </div>
+      </Switch>
     );
   }
 }
