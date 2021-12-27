@@ -59,6 +59,7 @@ class Search extends Component {
       <input
         value={ searchInAPI }
         onChange={ this.handleSubmit }
+        // data-testid="page-search"
         data-testid="search-artist-input"
         type="text"
         name="searchInAPI"
@@ -69,7 +70,10 @@ class Search extends Component {
 
     const searchArtistOrBand = (
       <form>
-        <label htmlFor="searchInAPI">
+        <label
+          htmlFor="searchInAPI"
+          data-testid="page-search"
+        >
           Digite aqui seu Artista ou Banda:
           { searchInput }
         </label>
