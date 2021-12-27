@@ -15,7 +15,7 @@ class ShowAlbuns extends Component {
     return (
       <section>
         <h3>
-          Resultados encontrados do:
+          Resultado de álbuns de:
           {' '}
           {artistSearched}
         </h3>

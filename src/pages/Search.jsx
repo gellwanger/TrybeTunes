@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
 import Loading from '../components/Loading';
 import ShowAlbuns from '../components/ShowAlbuns';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
@@ -55,7 +54,6 @@ class Search extends Component {
     }
     return (
       <div data-testid="page-search">
-        <Header />
         <input
           type="text"
           name="searchInAPI"
