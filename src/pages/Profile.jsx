@@ -27,11 +27,16 @@ class Profile extends Component {
   render() {
     const { saving, user } = this.state;
     return (
-      <div data-testid="page-profile">
+      <div
+        data-testid="page-profile"
+        className="body"
+      >
         {saving ? (
           <Loading />
         ) : (
           <div>
+            <span id="perfil-edit">Editar Perfil</span>
+            <br />
             <img src={ user.image } alt={ user.name } data-testid="profile-image" />
             <h4>{user.name}</h4>
             <p>{user.email}</p>

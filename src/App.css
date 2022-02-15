@@ -6,6 +6,11 @@
   padding: 10px;
 }
 
+.body {
+  background-color: rgb(216, 206, 206);
+  padding: 5px;
+}
+
 .links {
   display: flex;
   flex-direction: column;
@@ -13,4 +18,10 @@
 
 .searchMain {
   margin-left: 40%;
+}
+
+#perfil-edit {
+  font-size: 30px;
+  font-weight: 500;
+  padding-left: 50%;
 }
